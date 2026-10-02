@@ -43,12 +43,12 @@
 }
 
 :root {
-  --teal: #009c93;
-  --sage: #6b8f83;
-  --bluegrey: #759799;
+  --teal: #00776f;
+  --sage: #4f756b;
+  --bluegrey: #4f7275;
   --forest: #3d6042;
   --deepteal: #036a66;
-  --red: #ea3d3d;
+  --red: #c92f34;
   --text: #333;
   --muted: #666;
   --line: #eee;
@@ -84,7 +84,7 @@ body {
 }
 
 a {
-  color: #008a83;
+  color: #00716b;
 }
 
 img,
@@ -406,7 +406,7 @@ textarea {
 
 .quote-cta:hover,
 .quote-cta:focus-visible {
-  background: #d93636;
+  background: #ad272d;
 }
 
 .section-title {
@@ -482,7 +482,7 @@ textarea {
 }
 
 .project-copy h3 span {
-  color: #008a83;
+  color: #00716b;
 }
 
 .project-copy ul {
@@ -981,8 +981,8 @@ textarea {
   height: 60px;
   place-items: center;
   border-radius: 60px;
-  background: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.3);
+  background: #eee;
+  color: #333;
   text-decoration: none;
 }
 
