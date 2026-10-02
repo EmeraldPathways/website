@@ -27,7 +27,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
 
   function chooseCookies(choice: "accepted" | "declined" | "closed") { window.localStorage.setItem("epCookieChoice", choice); setCookieVisible(false); }
 
-  return <div id="top" className="site-root">
+  return <div id="top" className={`site-root${cookieVisible ? " has-cookie-banner" : ""}`}>
     <a className="skip-link" href="#main-content">Skip to content</a>
     <header className="site-header"><div className="header-inner">
       <nav className="desktop-nav" aria-label="Primary navigation">{navigation.map(([label, href]) => <a aria-current={pathname === href ? "page" : undefined} className={pathname === href ? "active" : ""} href={`${import.meta.env.BASE_URL}${href.replace(/^\//, "")}/`} key={href}>{label}</a>)}</nav>

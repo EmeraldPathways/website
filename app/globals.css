@@ -50,7 +50,7 @@
   --deepteal: #036a66;
   --red: #ea3d3d;
   --text: #333;
-  --muted: #a9a9a9;
+  --muted: #666;
   --line: #eee;
   --white: #fff;
   --background: #fff;
@@ -531,6 +531,53 @@ textarea {
   border: 0;
 }
 
+.video-gallery {
+  display: flex;
+  width: calc(100% - 50px);
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 25px;
+}
+
+.video-gallery > img {
+  width: 100%;
+  height: auto;
+}
+
+.video-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.video-links a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: 1px solid var(--deepteal);
+  color: var(--deepteal);
+  font-family: "ftnk", Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.video-links a span {
+  font-family: "jtcj", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.video-links a:hover,
+.video-links a:focus-visible {
+  background: #f2f8f7;
+  text-decoration: underline;
+}
+
 .social-page .gallery-section {
   display: flex;
   flex-direction: column;
@@ -872,11 +919,26 @@ textarea {
   height: 300px;
   margin-top: 40px;
   border: 0;
+  object-fit: cover;
+}
+
+.map-link {
+  display: block;
+  color: var(--deepteal);
+  text-decoration: none;
+}
+
+.map-link span {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: right;
+  text-decoration: underline;
 }
 
 .address {
   margin: 28px 0 0;
-  color: #aaa;
+  color: #666;
   font-family: "jtcj", Arial, sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -888,7 +950,7 @@ textarea {
   width: 100%;
   min-height: 200px;
   padding: 60px 5%;
-  color: #d1d1d1;
+  color: #666;
   font-family: "ftnk", Arial, sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -900,7 +962,7 @@ textarea {
   width: 30px;
   height: 30px;
   margin: 0 auto 30px;
-  color: #aaa;
+  color: #666;
   fill: currentColor;
   stroke: none;
 }
@@ -922,6 +984,10 @@ textarea {
   background: rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.3);
   text-decoration: none;
+}
+
+.site-root.has-cookie-banner .back-top {
+  bottom: 94px;
 }
 
 .back-top:hover,
@@ -959,8 +1025,9 @@ textarea {
 }
 
 .cookie-actions button {
+  min-height: 32px !important;
   height: auto !important;
-  padding: 0 !important;
+  padding: 4px 6px !important;
   border: 0 !important;
   border-radius: 0 !important;
   background: transparent !important;
@@ -1093,6 +1160,11 @@ textarea {
   .video-grid {
     width: 100%;
     margin: 0;
+  }
+
+  .video-gallery {
+    width: 90%;
+    margin: 20px 5%;
   }
 
   .video-grid iframe {
@@ -1339,8 +1411,10 @@ textarea {
 
   .home-service {
     width: 100%;
-    font-size: 14px;
-    line-height: 17px;
+    min-height: 96px;
+    aspect-ratio: auto;
+    font-size: 19px;
+    line-height: 24px;
   }
 
   .intro-copy,

@@ -35,6 +35,7 @@ try {
     const renderedHtml = sourceHtml
       .replace('<div id="root"></div>', `<div id="root">${content}</div>`)
       .replace(/\s*<script[^>]+src="[^"]+\.js"[^>]*><\/script>/g, "")
+      .replace(/\s*<script[^>]+src="[^"]+\.(?:tsx?|jsx?)"[^>]*><\/script>/g, "")
       .replace(/\s*<link[^>]+href="[^"]+\.css"[^>]*>/g, "")
       .replace("</head>", `    ${styles}\n  </head>`)
       .replace("</body>", `    ${scripts}\n  </body>`);
