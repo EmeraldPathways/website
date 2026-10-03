@@ -14,7 +14,34 @@ const videos = [
 export function VideoGallery() {
   return (
     <div className="video-gallery">
-      <img src={publicAsset("assets/social_video_pair.png")} alt="Video previews showing a whiskey pour and a Picadice social media post" />
+      <img
+        className="video-previews-wide"
+        src={publicAsset("assets/social_video_pair.png")}
+        alt="Video previews showing a whiskey pour and a Picadice social media post"
+        width={1202}
+        height={563}
+        loading="lazy"
+      />
+      <div className="video-preview-grid" role="group" aria-label="Video previews">
+        <div className="video-preview-frame">
+          <img
+            src={publicAsset("assets/social_whiskey_video.jpg")}
+            alt="Whiskey pouring video preview"
+            width={591}
+            height={563}
+            loading="lazy"
+          />
+        </div>
+        <div className="video-preview-frame">
+          <img
+            src={publicAsset("assets/social_picadice_video.jpg")}
+            alt="Picadice video preview"
+            width={591}
+            height={563}
+            loading="lazy"
+          />
+        </div>
+      </div>
       <div className="video-links" aria-label="Social media videos">
         {videos.map((video) => (
           <a key={video.src} href={video.src} target="_blank" rel="noopener noreferrer">
