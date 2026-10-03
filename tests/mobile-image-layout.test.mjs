@@ -25,6 +25,15 @@ function declarations(selector, breakpoint = "(max-width: 932px)") {
   return result ?? {};
 }
 
+function contrastAgainstWhite(color) {
+  const channels = color.match(/[a-f\d]{2}/gi).map((channel) => {
+    const value = parseInt(channel, 16) / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  const luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+  return 1.05 / (luminance + 0.05);
+}
+
 test("mobile project copy fits within its one-column card", () => {
   const projectCopy = declarations(".project-copy");
   const projectImage = declarations(".portfolio-row > img");
@@ -66,6 +75,7 @@ test("mobile logo gallery aligns a complete logo and wordmark", () => {
 
   const wordmark = declarations(".social-page .social-logo-grid .logo-wordmark");
   assert.equal(wordmark["text-align"], "center");
+  assert.ok(contrastAgainstWhite(wordmark.color) >= 4.5, "wordmark should meet AA text contrast on white");
 });
 
 test("mobile SEO gallery fits the complete lower composite", () => {
