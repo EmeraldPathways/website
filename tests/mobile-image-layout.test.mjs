@@ -12,7 +12,8 @@ function declarations(selector, breakpoint = "(max-width: 932px)") {
 
   stylesheet.walkAtRules("media", (media) => {
     if (media.params !== breakpoint) return;
-    media.walkRules(selector, (rule) => {
+    media.walkRules((rule) => {
+      if (!rule.selectors?.includes(selector)) return;
       result = Object.fromEntries(
         rule.nodes
           .filter((node) => node.type === "decl")
@@ -50,15 +51,21 @@ test("mobile video previews use aligned, uncropped cards", () => {
   assert.equal(previewImage["object-fit"], "contain");
 });
 
-test("mobile logo gallery shows the full composite instead of partial slices", () => {
+test("mobile logo gallery aligns a complete logo and wordmark", () => {
   assert.equal(
     declarations(".social-page .gallery-section .social-logo-grid img.media-pair-wide").display,
-    "block",
-  );
-  assert.equal(
-    declarations(".social-page .social-logo-grid .media-pair-mobile").display,
     "none",
   );
+
+  const logoGrid = declarations(".social-page .social-logo-grid");
+  assert.equal(logoGrid["grid-template-columns"], "repeat(2, minmax(0, 1fr))");
+
+  const logoCard = declarations(".social-page .social-logo-grid .media-pair-mobile");
+  assert.equal(logoCard.display, "grid");
+  assert.equal(logoCard["aspect-ratio"], "1 / 1");
+
+  const wordmark = declarations(".social-page .social-logo-grid .logo-wordmark");
+  assert.equal(wordmark["text-align"], "center");
 });
 
 test("mobile SEO gallery fits the complete lower composite", () => {
