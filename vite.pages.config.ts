@@ -15,6 +15,11 @@ export default defineConfig({
     outDir: "dist-pages",
     emptyOutDir: true,
     rollupOptions: {
+      output: {
+        entryFileNames: "assets/main.js",
+        chunkFileNames: "assets/site.js",
+        assetFileNames: "assets/[name].[ext]",
+      },
       input: {
         home: resolve(root, "index.html"),
         "web-design/index": resolve(root, "web-design/index.html"),
