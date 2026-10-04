@@ -11,7 +11,7 @@ export function ContactForm() {
     const subject = encodeURIComponent("Emerald Pathways website enquiry");
     const body = encodeURIComponent(`Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`);
     setDraftOpened(true);
-    window.location.href = `mailto:info@emeraldpathways.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:goemeraldpathways@gmail.com?subject=${subject}&body=${body}`;
   }
   return (
     <form className="contact-form" onSubmit={submit}>

@@ -456,8 +456,8 @@ textarea {
 .portfolio-row > img {
   width: calc(100% - 54px);
   margin: 0 25px 50px;
-  aspect-ratio: 1.93 / 1;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .project-copy {
@@ -600,7 +600,8 @@ textarea {
 }
 
 .app-image img {
-  width: 60%;
+  width: 80%;
+  height: auto;
   max-width: none;
   margin: 0;
   object-fit: contain;
@@ -637,16 +638,6 @@ textarea {
 .app-service:nth-child(odd) .app-copy {
   width: calc(100% - 4px);
   margin-left: 4px;
-}
-
-.app-service:nth-child(1) .app-image img,
-.app-service:nth-child(4) .app-image img {
-  width: 59.52%;
-}
-
-.app-service:nth-child(2) .app-image img,
-.app-service:nth-child(3) .app-image img {
-  width: 58.92%;
 }
 
 .app-service:nth-child(3) .app-image {
