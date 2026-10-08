@@ -19,11 +19,13 @@ const server = await createServer({
 try {
   const { routePages } = await server.ssrLoadModule("/app/route-pages.tsx");
   const homeHtml = await readFile(resolve(outputRoot, "index.html"), "utf8");
+  const assetVersion = process.env.GITHUB_SHA?.slice(0, 12) || Date.now().toString(36);
+  const withVersion = (tag) => tag.replace(/(href|src)=["']([^"']+)["']/, (match, attribute, url) => attribute + '="' + url + '?v=' + assetVersion + '"');
   const styles = [...homeHtml.matchAll(/<link[^>]+href="([^"]+\.css)"[^>]*>/g)]
-    .map((match) => match[0])
+    .map((match) => withVersion(match[0]))
     .join("\n    ");
   const scripts = [...homeHtml.matchAll(/<script[^>]+src="([^"]+\.js)"[^>]*><\/script>/g)]
-    .map((match) => match[0])
+    .map((match) => withVersion(match[0]))
     .join("\n    ");
 
   for (const { path, Component } of routePages) {
