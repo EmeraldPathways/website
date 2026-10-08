@@ -6,6 +6,7 @@ import postcss from "postcss";
 const css = postcss.parse(await readFile(new URL("../app/globals.css", import.meta.url), "utf8"));
 const social = await readFile(new URL("../app/social-media/page.tsx", import.meta.url), "utf8");
 const seo = await readFile(new URL("../app/seo/page.tsx", import.meta.url), "utf8");
+const webDesign = await readFile(new URL("../app/web-design/page.tsx", import.meta.url), "utf8");
 
 function declarations(selector, breakpoint) {
   let result = {};
@@ -47,6 +48,21 @@ test("portfolio copy and images fit the mobile column", () => {
   assert.equal(desktop["object-fit"], "contain");
 });
 
+test("portfolio thumbnails share one frame on every breakpoint", async () => {
+  for (const file of [
+    "web_the_collective_thumb.jpg",
+    "web_tuath_glass_thumb.jpg",
+    "web_universal_healing_tao_thumb.jpg",
+    "web_dublin_whiskey_tours_thumb.jpg",
+    "web_picadice_thumb.jpg",
+    "web_irish_whiskey_magazine_thumb.jpg",
+    "web_design_whiskey_experts_thumb.jpg",
+  ]) {
+    assert.ok(webDesign.includes(file), `${file} is used for the portfolio thumbnail`);
+    assert.deepEqual(await dimensions(file), [772, 400]);
+  }
+});
+ 
 test("social galleries use original full artwork and no dead video players", async () => {
   for (const [file, minWidth, minHeight] of [
     ["social_whiskey_experts_full.png", 1080, 1080],
