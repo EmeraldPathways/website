@@ -40,6 +40,11 @@ test("portfolio copy and images fit the mobile column", () => {
   assert.equal(project["min-width"], "0");
   assert.equal(image["object-fit"], "contain");
   assert.equal(image.height, "auto");
+  assert.equal(image["aspect-ratio"], "1.93 / 1");
+  assert.equal(image["object-position"], "center");
+  const desktop = declarations(".portfolio-row > img");
+  assert.equal(desktop["aspect-ratio"], "1.93 / 1");
+  assert.equal(desktop["object-fit"], "contain");
 });
 
 test("social galleries use original full artwork and no dead video players", async () => {
